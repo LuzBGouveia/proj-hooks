@@ -1,5 +1,6 @@
 import { useState } from "react"
-import { Text, TextInput, TouchableOpacity, View } from "react-native"
+import { Text, TextInput, Touchable, TouchableOpacity, View } from "react-native"
+import EvilIcons from '@expo/vector-icons/EvilIcons';
 
 export default function UseStatePage() {
   const [valor, setValor] = useState(0);
@@ -12,6 +13,14 @@ export default function UseStatePage() {
 
   function handleSomaValor(value: number) {
     setValor(value + 1)
+  }
+
+  function submit() {
+    console.log({
+      nome,
+      email,
+      idade
+    })
   }
 
   return (
@@ -76,6 +85,7 @@ export default function UseStatePage() {
           onChangeText={(text) => setEmail(text)}
           placeholderTextColor="#00f"
           placeholder="Digite seu email"
+          keyboardType="email-address"
         />
 
         <TextInput
@@ -90,8 +100,32 @@ export default function UseStatePage() {
           onChangeText={(text) => setIdade(text)}
           placeholderTextColor="#00f"
           placeholder="Digite sua idade"
-          keyboardType=""
+          keyboardType="decimal-pad"
         />
+
+        <TouchableOpacity
+          onPress={submit}
+          style={{
+            padding: 10,
+            borderRadius: 9,
+            backgroundColor: '#fff',
+            flexDirection: "row",
+            alignItems: "center"
+            // alignItems: "center"
+          }}
+        >
+          <EvilIcons name="arrow-right" size={24} color="black" />
+
+          <Text
+            style={{
+              backgroundColor: "#f0c",
+              textAlign: "center",
+              width: "100%"
+            }}
+          >
+            Enviar
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   )
